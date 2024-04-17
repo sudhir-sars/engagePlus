@@ -1,3 +1,39 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* Target the scrollbar track (WebKit-based browsers) */
+*::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Customize track background */
+}
+
+/* Target the scrollbar thumb (WebKit-based browsers) */
+*::-webkit-scrollbar-thumb {
+  background-color: #888; /* Customize thumb background */
+  border-radius: 6px; /* Add rounded corners */
+}
+
+/* Target the scrollbar thumb (hover) (WebKit-based browsers) */
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #666; /* Adjust hover effect */
+}
+
+/* Remove default scrollbar for Firefox (optional) */
+textarea {
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Provide a custom scrollbar for Firefox (optional) */
+textarea::-moz-scrollbar {
+  display: none; /* Firefox */
+}
+
+/* Class for your custom scrollbar */
+.custom-scrollbar {
+  overflow-y: auto; /* Enable scrollbar */
+}
+
+:root{
+  background-color: rgb(226 232 240 / var(--tw-bg-opacity));
+}
