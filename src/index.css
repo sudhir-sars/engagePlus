@@ -37,3 +37,6 @@ textarea::-moz-scrollbar {
 :root{
   background-color: rgb(226 232 240 / var(--tw-bg-opacity));
 }
+.navbar-animation {
+  transition: all 0.3s ease; /* Smooth transition for all properties with a duration of 0.3 seconds */
+}
