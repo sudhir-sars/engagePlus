@@ -1,10 +1,17 @@
+const {connectDb} = require('./database/connectDb');
 const express = require('express');
 const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const { MongoClient } = require("mongodb");
+const addNewUser=require("./saveNewUser")
+
+
 app.use(bodyParser.json()); 
+connectDb();
 // Port to listen on (default: 3000)
 // Load environment variables from .env file
+
 
 
 
@@ -25,8 +32,14 @@ app.post('/email', (req, res) => {
   res.send(sucess);
 });
 
+app.post('/adduser', (req, res) => {
+  addNewUser(req.body)
+  res.send({"sucess":req.body});
+});
+
+
 app.post('/aiassist', async (req, res) => {
-  console.log("here");
+  
 
   const prompt = req.body.prompt; // Corrected typo
 
