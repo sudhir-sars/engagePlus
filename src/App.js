@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react';
 import NavBar from './components/NavBar';
 import LandingPage from './components/LandingPage';
-import MessageInput from './components/MessageInput'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
 import  ServiceState  from './context/ServiceState';
-
-import UploadWhatsappContacts from './components/UploadWhatsappContacts';
-import UploadEmailContacts from './components/UploadEmailContacts'
-import LoginPage from './components/LoginPage'
+import Login from './components/Login'
+import SignUp from './components/SignUp';
+import Footer from './components/Footer';
+import Email from './components/email/Email';
+import WhatsappMessageInput from './components/whatsapp/WhatsappMessageInput';
+import EmailMessageInput from './components/email/EmailMessageInput';
+import CustomCursor from './components/CustomCurser';
 
 
 const App = () => {
@@ -19,34 +20,38 @@ const App = () => {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <><NavBar/> <LandingPage/></>,
+      element: (
+        <>
+          <LandingPage />
+          </>
+      ), // Wrap components, set minHeight for footer
     },
     {
-      path: "/email",
-      element: <><NavBar/> <MessageInput/></>,
+      path: "/service.email",
+      element:  <Email/>,
     },
     {
-      path: "/whatsapp",
-      element: <><NavBar/> <MessageInput/></>,
+      path: "/service.email/EmailMessageInput",
+      element:  <EmailMessageInput/>,
+      
     },
     {
-      path: "/UploadEmailContacts",
-      element: <><NavBar/> <UploadEmailContacts/></>,
-    },
-    {
-      path: "/uploadWhatsappContacts",
-      element: <><NavBar/> <UploadWhatsappContacts/></>,
+      path: "/service.whatsapp",
+      element: <WhatsappMessageInput/>
     },
     {
       path: "/login",
-      element: <><NavBar/> <LoginPage/></>,
+      element: <><NavBar/> <Login/></>,
     },
   ]);
 
   return (
     <>
       <ServiceState>
+      <CustomCursor />
+      <NavBar /> 
         <RouterProvider router={router} />
+        <Footer />
       </ServiceState>
     </>
   );

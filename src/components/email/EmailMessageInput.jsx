@@ -1,11 +1,11 @@
 import React from 'react';
 import { useState, useRef,useEffect,useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import UploadEmailContacts from './UploadEmailContacts';
 import { Link } from 'react-router-dom';
-import serviceContext from '../context/serviceContext';
+import serviceContext from '../../context/serviceContext'
 
-const Whatsapp = () => {
+const EmailMessageInput = () => {
   
 
   const context = useContext(serviceContext);
@@ -14,6 +14,8 @@ const Whatsapp = () => {
   const [inputValue, setInputValue] = useState('');
   const textAreaRef = useRef(null);
   const [aiassist, setaiassist] = useState(false);
+  const [inputDone, setInputDone] = useState(false);
+  
   
   const navigate = useNavigate(); // Hook to access the history object
   // useEffect(() => {
@@ -59,11 +61,9 @@ const Whatsapp = () => {
       
       
       else if (inputValue.length > 5) {
-        if(service=='email'){
-          navigate('/UploadEmailContacts', { state: inputValue }); // Redirect to the EmailInput component
-        }else if(service==='whatsapp'){
-          navigate('/uploadWhatsappContacts',{state: inputValue})
-        }
+        
+          setInputDone(true) // Redirect to the EmailInput component
+
       } else if (inputValue.length < 5) {
         console.log("please enter message of min length 10");
       }
@@ -111,41 +111,44 @@ const Whatsapp = () => {
   }
   // Use useEffect to handle height adjustment on initial render and updates
   useEffect(() => {
+    setInputDone(false);
     adjustTextareaHeight();
-    if(window.location.pathname==='/email'){
-      setservice('email')
-    }
-    if(window.location.pathname==='/whatsapp'){
-      setservice('whatsapp')
-    }
   }, [inputValue]); // Trigger on input value change
 
 
   return (
-    <div className="bg-white h-screen">
-      <div className="bg-white pt-32  flex items-center justify-center">
-        <div className=' relative'>
-        <textarea
-          ref={textAreaRef}
-          className="font-mono px-5 py-5 outline-blue-200 rounded-2xl w-[40vw] border text-sm break-before-auto"
-          value={inputValue}
-          onChange={handleChange}
-          
-          placeholder={aiassist ? "Please enter prompt for your message" : "Please enter your message"}
-
-          onInput={adjustTextareaHeight} // Additional event listener for efficiency
-        />
-        
-       <button onClick={handleAiassistclick}><div className={`rounded-2xl bg-[#f3f4f6]  absolute bottom-4 right-5 px-4 py-1 border-2 ${aiassist?"border-green-300":""}`}>Ai Assit </div></button>
-       </div>
-      
-      </div>
-      <div className=' flex justify-center '> 
-        <button onClick={handleNextButtonClick} className=' justify-center h-11 w-28 font-mono mt-24 bg-[#f3f4f6]  text-black text-lg rounded-lg' >{aiassist?"Generate":"Next"}</button>
+    <>
+        {!inputDone ?<>
+          <div className="h-[100vh]">
+          <div className="pt-32 flex items-center justify-center">
+            <div className='relative'>
+              <textarea
+                ref={textAreaRef}
+                className="px-5 py-5 outline-none mr-9 pb-4 font-mono h-8 bg-[#1e293b] backdrop-blur-lg backdrop-saturate-200 bg-opacity-75 shadow-2xl text-white rounded-2xl w-[40vw] text-sm break-before-auto"
+                value={inputValue}
+                onChange={handleChange}
+                placeholder={aiassist ? "Please enter prompt for your message" : "Please enter your message"}
+                onInput={adjustTextareaHeight} // Additional event listener for efficiency
+              />
+              <button onClick={handleAiassistclick}>
+                <div className={`rounded-2xl bg-[#f3f4f6] absolute bottom-4 right-12 px-4 py-1 border-2 ${aiassist ? "border-green-300" : ""}`}>Ai Assist</div>
+              </button>
+            </div>
+          </div>
+          <div className='flex justify-center'>
+            <button onClick={handleNextButtonClick} className='justify-center h-11 w-28 font-mono mt-24 bg-[#f3f4f6] text-black text-lg rounded-lg'>{aiassist ? "Generate" : "Next"}</button>
+          </div>
         </div>
-    </div>
+        </>
+        :
+        <div><UploadEmailContacts/> </div>
+        }
+        </>
+      
+    
+    
   );
 };
 
 
-export default Whatsapp;
+export default EmailMessageInput;

@@ -5,6 +5,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const { MongoClient } = require("mongodb");
 const addNewUser=require("./saveNewUser")
+const login =require("./login")
 
 
 app.use(bodyParser.json()); 
@@ -24,6 +25,7 @@ const port = process.env.PORT || 3000;
 app.use(cors());
 // Basic route handler (responds with "Hello World!")
 app.get('/', (req, res) => {
+  
   res.send('Hello World!');
 });
 
@@ -32,9 +34,16 @@ app.post('/email', (req, res) => {
   res.send(sucess);
 });
 
-app.post('/adduser', (req, res) => {
+app.post('/signup', (req, res) => {
   addNewUser(req.body)
   res.send({"sucess":req.body});
+});
+
+app.post('/login', async(req, res) => {
+  
+  const data=await login(req.body);
+  
+  res.send(data)
 });
 
 

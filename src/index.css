@@ -2,41 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
 
-/* Target the scrollbar track (WebKit-based browsers) */
-*::-webkit-scrollbar-track {
-  background-color: #f1f1f1; /* Customize track background */
+:root {
+  --bg-color: #131b29; /* Change this to the desired background color */
 }
 
-/* Target the scrollbar thumb (WebKit-based browsers) */
-*::-webkit-scrollbar-thumb {
-  background-color: #888; /* Customize thumb background */
-  border-radius: 6px; /* Add rounded corners */
+/* Apply the background color to the body */
+body {
+  background-color: var(--bg-color);
 }
 
-/* Target the scrollbar thumb (hover) (WebKit-based browsers) */
-*::-webkit-scrollbar-thumb:hover {
-  background-color: #666; /* Adjust hover effect */
+
+
+
+/* styles.css */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-/* Remove default scrollbar for Firefox (optional) */
-textarea {
-  scrollbar-width: none; /* Firefox */
+::-webkit-scrollbar-track {
+  background: #19263a;
 }
 
-/* Provide a custom scrollbar for Firefox (optional) */
-textarea::-moz-scrollbar {
-  display: none; /* Firefox */
+::-webkit-scrollbar-thumb {
+  background: #080c13;
+  border-radius: 10px; /* Adjust the radius to control the roundness of the ends */
+  margin-right: 100px;
 }
 
-/* Class for your custom scrollbar */
-.custom-scrollbar {
-  overflow-y: auto; /* Enable scrollbar */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
-:root{
-  background-color: rgb(226 232 240 / var(--tw-bg-opacity));
-}
-.navbar-animation {
-  transition: all 0.3s ease; /* Smooth transition for all properties with a duration of 0.3 seconds */
+.glass-morphism {
+  backdrop-filter: blur(25px) saturate(100%);
+  -webkit-backdrop-filter: blur(25px) saturate(100%);
+  background-color: rgba(7, 10, 15, 0.001);
+  box-shadow: 0 20px 30px -20px rgba(0, 0, 0, 0.3);
 }
