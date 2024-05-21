@@ -4,13 +4,21 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
 
-:root {
-  --bg-color: #131b29; /* Change this to the desired background color */
+/* Default light mode */
+
+/* Default light mode */
+:root { /* Light mode background color */
+  --bg-color: #f4f7fe; /* Dark mode background color */
 }
 
 /* Apply the background color to the body */
 body {
-  background-color: var(--bg-color);
+  background-color: var(--bg-color); /* Set light mode background color by default */
+}
+
+/* Dark mode */
+body.dark-mode {
+  background-color: var(--bg-color-dark); /* Set dark mode background color */
 }
 
 
@@ -22,22 +30,33 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #19263a;
+  background: #f4f7fe;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #080c13;
+  background: #dbeafe;
   border-radius: 10px; /* Adjust the radius to control the roundness of the ends */
-  margin-right: 100px;
+  
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: #b8d5fb;
 }
 
 .glass-morphism {
-  backdrop-filter: blur(25px) saturate(100%);
-  -webkit-backdrop-filter: blur(25px) saturate(100%);
-  background-color: rgba(7, 10, 15, 0.001);
-  box-shadow: 0 20px 30px -20px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(25px) saturate(50%);
+  /* -webkit-backdrop-filter: blur(2px) saturate(100%); */
+  background-color: rgba(7, 10, 15, 0.01);
+  /* box-shadow: 0 20px 30px -20px rgba(0, 0, 0, 0.15); */
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg) scale(1),}
+  100% { transform: rotate(3deg) scale(1.05); }
+}
+
+
+
+.rotate {
+  animation: rotate 0.5s ease forwards; /* Apply rotate animation */
 }

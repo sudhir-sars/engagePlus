@@ -1,9 +1,10 @@
 import { useState,useEffect } from "react";
 import { useLocation } from 'react-router-dom';
+import TextEditor from "../TextEditor";
 
-const UploadEmailContacts = () => {
-  const location = useLocation();
-  const messageData = location.state;
+const UploadEmailContacts = ({messageData}) => {
+  console.log(messageData)
+ 
   
   const [emails, setEmails] = useState([]);
   const [uploadMethod, setUploadMethod] = useState('textarea'); // Default method
@@ -52,9 +53,9 @@ const UploadEmailContacts = () => {
 
   return (
     <div className="h-[80vh]">
-    <div className="flex justify-center mt-11 text-gray-400 ">
-
+    <div className="flex justify-center mt-11 text-black ">
       <div className="  p-4 rounded shadow-md w-[50vw]">
+    
         <h2 className="text-xl font-bold mb-4">Upload Email Contacts</h2>
         <div className="mb-4 flex justify-start space-x-14">
           <div>
@@ -64,7 +65,7 @@ const UploadEmailContacts = () => {
             value="textarea"
             checked={uploadMethod === "textarea"}
             onChange={handleUploadMethodChange}
-            className="mr-2"
+            className="mr-2 bg-white"
           />
           <label htmlFor="emailInput">Type Email Address</label>
           </div>
@@ -86,7 +87,7 @@ const UploadEmailContacts = () => {
 
         {uploadMethod === 'textarea' && (
           <textarea
-            className="w-full   p-2 h-24 resize-none mr-9 rounded-lg pb-4 font-mono text-sm  outline-none px-3 py-4 bg-[#1e293b] backdrop-blur-lg backdrop-saturate-200 bg-opacity-75 shadow-2xl"
+            className="w-full   p-2 h-24 resize-none mr-9 rounded-lg pb-4 font-mono text-sm  outline-none px-3 py-4 bg-[#ffffff] "
             placeholder="Enter emails, one per line"
             onChange={handleTextAreaChange}
             value={emails.join('\n')}
@@ -98,8 +99,8 @@ const UploadEmailContacts = () => {
           type="file"
           accept=".csv"
           onChange={handleFileUpload}
-          className="w-auto border px-2 py-4 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none mr-9 rounded-lg pb-4 font-mono text-sm outline-none bg-[#1e293b] backdrop-blur-lg backdrop-saturate-200 bg-opacity-75 shadow-2xl"
-          style={{ color: 'white' }} // Change button text color
+          className="w-auto border px-2 py-4 focus:outline-none focus:ring-1 focus:ring-black resize-none mr-9 rounded-lg pb-4 font-mono text-sm text-black outline-none bg-[#f4f7fe] "
+          style={{ color: 'black' }} // Change button text color
         />
         
         )}
@@ -110,7 +111,7 @@ const UploadEmailContacts = () => {
             <div className="overflow-y-auto max-h-24"> {/* Limiting to 8 items and providing scroll */}
               <ul className="flex  items-center justify-center flex-wrap">
               {emails.slice(0, emails.length).map((email, index) => (
-                <li key={index} className="text-black text-sm font-mono bg-gray-400  mx-2 px-2 rounded-2xl my-2">
+                <li key={index} className="text-black text-sm font-mono bg-white  mx-2 px-2 rounded-2xl my-2">
                   {email}
                 </li>
               ))}
@@ -120,9 +121,9 @@ const UploadEmailContacts = () => {
         )}
       </div>
     </div>
-      <div className='mt-20 flex items-center justify-center'>
+      <div className='mt-12 flex items-center justify-center'>
         <button 
-        className="bg-[#f3f4f6] text-black font-mono hover:bg-slate-200 py-2 px-4 rounded"
+        className="bg-[#d0d3d9] text-black font-mono hover:bg-slate-200 py-2 px-6 rounded"
         onClick={sendEmail}
         >Send </button>
       </div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef , useContext} from 'react';
 import { BrowserRouter as Router,Link} from 'react-router-dom'
 import CustomCursor from './CustomCurser';
 import ServiceCard from './cards/ServiceCard';
@@ -12,11 +12,14 @@ import dataAnalyticsCardImage from '../assets/dataAnlyticsCardImage.png'
 import urlShortnerCardImage from '../assets/urlShortnerCardImage.png'
 import newFeaturesCardImage from '../assets/newFeaturesCardImage.png'
 import Footer from './Footer';
+import UserContext from '../context/UserContext';
+
 
 const LandingPage = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [inputValue, setInputValue] = useState('');
   const textAreaRef = useRef(null);
+  
 
   useEffect(() => {
     const updateCursorPosition = (e) => {
@@ -59,16 +62,17 @@ const LandingPage = () => {
 
   return (
     <div className='h-[250vh]'>
-    <CustomCursor />
+    {/* <CustomCursor /> */}
     
-    <div className="bg-[#131b29] h-screen z-0 ">
-        <div className='flex items-center justify-center mt-24 flex-col'>
-          <div className='text-4xl px-5 py-2 font-mono rounded-lg text-white border-2 border-gray-400'>"Empower Your Outreach, Amplify Your Impact..."</div>
+    <div className=" h-full z-0 bg-[#f4f7fe]  text-black">
+        <div className='flex items-center justify-center pt-20 flex-col'>
+          <div className='text-4xl px-5 py-2 font-mono rounded-lg  border-2 border-gray-400'>"Empower Your Outreach, Amplify Your Impact..."</div>
           <div className='flex justify-around px-36'>
-            <div className='text-xl text-white w-[80vw]'>
-            <div className=' mt-32 text-3xl'>Why EngagePlus???</div>
+            <div className='text-xl  w-[80vw]'>
+            <div className=' pt-20 text-3xl'>Why EngagePlus???</div>
             <span className='border-b border-gray-400 flex w-96 mt-2'></span>
             <div className='mt-5 w-[40vw]'>EngagePlus is your ultimate solution for effortless and effective communication with your audience. Whether it's sending emails or WhatsApp messages to hundreds or thousands of recipients, we've got you covered. Our platform provides powerful analytics, AI-assisted message writing, URL shortening, scheduling capabilities, and much more.</div>
+            <div className='flex justify-end'><button className=' text-green-800 mt-10 mr-32  rounded-xl px-7 py-2  bg-[#e9effc] hover:bg-[#b9d5fd] pb-3'>Experence Now</button></div>
             </div>
             <div>
               <img src={landingPageImage} alt="" />
@@ -85,7 +89,7 @@ const LandingPage = () => {
             footLine={"Get started today and elevate your Email Marketing Strategy!!!"}
             buttonText={"Experience Now >>"}
             image={emailCardImage}
-            buttonLink={"service.email"} />
+            buttonLink={"home/service.email"} />
 
             <ServiceCard 
             mt={"mt-8"}
@@ -111,7 +115,7 @@ const LandingPage = () => {
         </div>
         <div className='cards mt-36'>
           <div className='flex justify-center items-center space-x-20'>
-            <ServiceCard 
+            {/* <ServiceCard 
             imagepx={"px-6"}
             imagepy={""}
             title={"Url Shortner"} 
@@ -120,7 +124,7 @@ const LandingPage = () => {
             footLine={"Get started today and elevate your Email Marketing Strategy!!!"}
             buttonText={"Experience Now >>"}
             image={urlShortnerCardImage}
-            buttonLink={"service.urlshorten"} />
+            buttonLink={"service.urlshorten"} /> */}
 
             <ServiceCard 
             mt={"mt-7"}
@@ -132,7 +136,7 @@ const LandingPage = () => {
             image={dataAnalyticsCardImage}
             buttonLink={"service.aidriveninsights"} />
 
-            <ServiceCard 
+            {/* <ServiceCard 
             imagepx={"px-5"}
             title={"Upcomming Features"} 
             mt={"mt-8"}
@@ -142,7 +146,7 @@ const LandingPage = () => {
             footLine={"Help shape the future of EngagePlus with your valuable insights and suggestions."}
             buttonText={"Explore Now >>"}
             image={newFeaturesCardImage}
-            buttonLink={"service.upcommingfeatures"} />
+            buttonLink={"service.upcommingfeatures"} /> */}
             
           </div>
         </div>

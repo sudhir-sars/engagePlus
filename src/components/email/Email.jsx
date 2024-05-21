@@ -8,7 +8,8 @@ const Email = () => {
   return (
     <div className='h-[100vh] flex items-center justify-center  -mt-28 space-x-10'>
       <OptionCard
-      cardWidth={"w-[20vw]"}
+      cardWidth={"w-auto"}
+      cardHeight={"h-auto"}
       title={"Message Plain text"}
       image={plainTextFileImage}
       // imageHeight={150}
@@ -17,19 +18,21 @@ const Email = () => {
       link={"EmailMessageInput"}
       />
       <OptionCard
-      cardWidth={"w-[20vw]"}
+      cardWidth={"w-auto"}
+      cardHeight={"h-auto"}
       title={"Embed HTML "}
       image={HtmlCardImage}
       // imageHeight={150}
-      imageWidth={250}
+      imageWidth={210}
       link={"EmailHtmlInput"}
       />
       <OptionCard
-      cardWidth={"w-[20vw]"}
+      cardWidth={"w-auto"}
+      cardHeight={"h-auto"}
       title={"Use Templates"}
       image={underConstructionCardImage}
       // imageHeight={150}
-      imageWidth={250}
+      imageWidth={190}
       
       />
     
